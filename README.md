@@ -121,11 +121,6 @@ The estimated \(p\)-value of the test procedure is given through
 p.value <- out$p.value 
 ```
 
-The required R file \`\`Npres\_Fucntions.R’’ can be downloaded
-[here](http://stat.columbia.edu/~rohit/Code/Npres_Fucntions.R). Note the
-functions require the following R-packages: boot, data.table, energy,
-np, and stats.
-
 \# References
 
 <div id="refs" class="references">
