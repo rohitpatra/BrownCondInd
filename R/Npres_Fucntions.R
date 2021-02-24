@@ -1,5 +1,5 @@
 # library('np')
-# options(np.messages=FALSE)
+#
 # library('energy')
 # library('stats')
 # library('data.table')
@@ -28,13 +28,6 @@
 #' @param bwmet which method to use to select bandwidths. cv.ls specifies least-squares cross-validation, and normal-reference just computes the ‘rule-of-thumb’ bandwidth hj using the standard formula hj = 1.06σj n−1/(2P +l) , where σj is an adaptive measure of spread of the jth continuous variable defined as min(standard deviation, mean absolute de- viation/1.4826, interquartile range/1.349), n the number of observations, P the order of the kernel, and l the number of continuous variables. Note that when there exist factors and the normal-reference rule is used, there is zero smoothing of the factors. Defaults to cv.ml.
 #' @param bwobj should be of the kind that is returned from  Calc.F.cond. Use it in case you want to use previously calculated bandwdiths  (from other data points) to evaluate the estimate the conditional distribution functions from (x,y,z). Default is NULL. In that case uses `bwmet` to compute this#'
 #' @return A list including the elements:
-#' \item{alp.hat}{estimate of alpha. NULL if `method' is `lwr.bnd'.}
-#' \item{alp.Lwr}{95\% lower confidence bound of alpha. NULL if `method` is `cv` or `fixed`.}
-#' \item{Fs.hat}{A list containing with elements `x` and `y` values for the function estimate of `F.s`}
-#' \item{dist.out}{An object of the class `dist.calc` using the complete data.gen}
-#' \item{c.n}{ Value of the tuning parameter used to compute the final estimate.}
-#' \item{cv.out}{An object of class `cv.mix.model`. The object is NULL if method is `fixed`.}
-#'
 #' \item{F.x_z}{Estimate of conditional distribution of X|Z}
 #' \item{F.y_z}{Estimate of conditional distribution of Y|Z}
 #'\item{Fbw.x_z}{Bandwidths used for computation of conditional distribution of x|z}
@@ -71,7 +64,7 @@ Calc.F.cond<-function(x, y,z,z.dim, bwmet,bwobj=NULL){ # Conditional Distributio
   return(list('F.x_z'=F.x_z,'F.y_z'=F.y_z,'Fbw.x_z'=Fbw.x_z,'Fbw.y_z'=Fbw.y_z,'Fbw.z_z'=temp$Fbw.z_z,'F.z_hat'=temp$F.z_hat))
 }
 
-
+options(np.messages=FALSE)
 
 Cond.dist.z<- function(z,z.dim, bwmet,bwobj=NULL){ #bwobj is vector of lists of type "condbandwidth" in the np package (the first element is of type "bandwidth" )
   n<-nrow(as.matrix(z))
@@ -265,14 +258,14 @@ boot.F.hat.emp.z.cv<-function(Dist.calc,x,y,z,n ,z.dim,accuracy,R = 999){
 #' @param data.to.work A numeric matrix containing `x`, `y`, and `z`. The first column is `x`, the second column is `y`, and the rest is data from `z`. We test for conditional independence of `x` and `y` given `z`
 #' @param z.dim Dimension of the random variable `z`
 #'
-#' @return A numeric computing the statistic described in (3.7) of  see PatraEtAL15
+#' @return A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2016)
 #' @importFrom np npcdist
 #' @importFrom np npcdistbw
 #' @importFrom np npudist
 #' @importFrom np npudistbw
 #' @importFrom stats approx
 #' @importFrom stats ecdf
-#' 
+#'
 #'@importFrom stats dnorm
 #'@importFrom stats fitted
 #'@importFrom stats pnorm
@@ -329,7 +322,15 @@ npresid.statistics<-function(data.to.work,z.dim){
 #' @param accuracy It determines how precise you want to be when inverting the estimated conditional distribution function while generating the bootstrap samples.  500 is generally more than sufficient. Default is 500.
 #' @param boot.replic Number of bootstrap replicates used for p value calculations.
 #'
-#' @return
+#' @return A list containing:
+#' \item{statistic}{ A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2016)}
+#' \item{p.value}{Estimated p-value computed based on bootstrap.}
+#'\item{method}{A variable describing the method of computation. Currently we only implement only one method. Thus this is always: `Cond Indep test: p-values by inverting F_hat to get bootstrap samples`}
+#'\item{bandwidth.method}{ A variable describing the method for choosing bandwidth in estimation. In this version it always says: `least-squares cross-validation, see "np" package`,}
+#'\item{data.desrip}{A string describing the data in words}
+#'\item{bootstrap.stat.values}{A numeric vector containing the bootstrap statistics.}
+#'\item{cond.dist.obj}{A list containing estimators of FX|Z, FY|Z, and FZ evaluated at the data points (denoted by F.x_z, F.y_z, and F.z_hat) and the bandwidth used (denoted by Fbw.x_z, Fbw.y_z, and Fbw.z_z) to evaluate the conditional distribution functions}
+#'         
 #' @export
 #'
 #' @examples
@@ -360,7 +361,7 @@ npresid.statistics<-function(data.to.work,z.dim){
 npresid.boot<-function(data.to.work,z.dim,accuracy=500,boot.replic=999){
 	data.to.write.list<-data.to.work
 	##############################################################################
-  n<-nrow(data.to.work) 
+  n<-nrow(data.to.work)
 	x<- data.to.work[,1]
 	data.to.work<-data.to.work[,-1]
 	y<-data.to.work[,1]
