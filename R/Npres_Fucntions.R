@@ -253,12 +253,12 @@ boot.F.hat.emp.z.cv<-function(Dist.calc,x,y,z,n ,z.dim,accuracy,R = 999){
 
 
 
-#'  Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2016)
+#'  Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2015)
 #'
 #' @param data.to.work A numeric matrix containing `x`, `y`, and `z`. The first column is `x`, the second column is `y`, and the rest is data from `z`. We test for conditional independence of `x` and `y` given `z`
 #' @param z.dim Dimension of the random variable `z`
 #'
-#' @return A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2016)
+#' @return A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2015)
 #' @importFrom np npcdist
 #' @importFrom np npcdistbw
 #' @importFrom np npudist
@@ -314,7 +314,7 @@ npresid.statistics<-function(data.to.work,z.dim){
   return(stats)
 }
 
-#'  Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test
+#'  Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2015)) and evaluate the p-value of the proposed test
 #'
 #'
 #' @param data.to.work A numeric matrix containing `x`, `y`, and `z`. The first column is `x`, the second column is `y`, and the rest is data from `z`. We test for conditional independence of `x` and `y` given `z`
@@ -323,7 +323,7 @@ npresid.statistics<-function(data.to.work,z.dim){
 #' @param boot.replic Number of bootstrap replicates used for p value calculations.
 #'
 #' @return A list containing:
-#' \item{statistic}{ A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2016)}
+#' \item{statistic}{ A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2015)}
 #' \item{p.value}{Estimated p-value computed based on bootstrap.}
 #'\item{method}{A variable describing the method of computation. Currently we only implement only one method. Thus this is always: `Cond Indep test: p-values by inverting F_hat to get bootstrap samples`}
 #'\item{bandwidth.method}{ A variable describing the method for choosing bandwidth in estimation. In this version it always says: `least-squares cross-validation, see "np" package`,}

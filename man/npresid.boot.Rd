@@ -2,7 +2,7 @@
 % Please edit documentation in R/Npres_Fucntions.R
 \name{npresid.boot}
 \alias{npresid.boot}
-\title{Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test}
+\title{Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2015)) and evaluate the p-value of the proposed test}
 \usage{
 npresid.boot(data.to.work, z.dim, accuracy = 500, boot.replic = 999)
 }
@@ -17,7 +17,7 @@ npresid.boot(data.to.work, z.dim, accuracy = 500, boot.replic = 999)
 }
 \value{
 A list containing:
-\item{statistic}{ A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2016)}
+\item{statistic}{ A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2015)}
 \item{p.value}{Estimated p-value computed based on bootstrap.}
 \item{method}{A variable describing the method of computation. Currently we only implement only one method. Thus this is always: `Cond Indep test: p-values by inverting F_hat to get bootstrap samples`}
 \item{bandwidth.method}{ A variable describing the method for choosing bandwidth in estimation. In this version it always says: `least-squares cross-validation, see "np" package`,}
@@ -26,7 +26,7 @@ A list containing:
 \item{cond.dist.obj}{A list containing estimators of FX|Z, FY|Z, and FZ evaluated at the data points (denoted by F.x_z, F.y_z, and F.z_hat) and the bandwidth used (denoted by Fbw.x_z, Fbw.y_z, and Fbw.z_z) to evaluate the conditional distribution functions}
 }
 \description{
-Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test
+Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2015)) and evaluate the p-value of the proposed test
 }
 \examples{
 # data generation mechanism used in the paper

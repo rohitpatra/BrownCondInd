@@ -2,7 +2,7 @@
 % Please edit documentation in R/Npres_Fucntions.R
 \name{npresid.statistics}
 \alias{npresid.statistics}
-\title{Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2016)}
+\title{Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2015)}
 \usage{
 npresid.statistics(data.to.work, z.dim)
 }
@@ -12,10 +12,10 @@ npresid.statistics(data.to.work, z.dim)
 \item{z.dim}{Dimension of the random variable `z`}
 }
 \value{
-A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2016)
+A numeric computing the statistic described in (3.7) of  see Patra, Sen, and Székely (2015)
 }
 \description{
-Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2016)
+Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2015)
 }
 \examples{
 #data generation mechanism used in the paper
