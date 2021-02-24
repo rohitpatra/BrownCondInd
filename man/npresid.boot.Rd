@@ -23,7 +23,7 @@ A list containing:
 \item{bandwidth.method}{ A variable describing the method for choosing bandwidth in estimation. In this version it always says: `least-squares cross-validation, see "np" package`,}
 \item{data.desrip}{A string describing the data in words}
 \item{bootstrap.stat.values}{A numeric vector containing the bootstrap statistics.}
-\item{cond.dist.obj}{ A list containing estimators of FX|Z, FY|Z, and FZ evaluated at the data points (denoted by F.x_z, F.y_z, and F.z_hat) and the bandwidth used (denoted by Fbw.x_z, Fbw.y_z, and Fbw.z_z) to evaluate the conditional distribution functions}
+\item{cond.dist.obj}{A list containing estimators of FX|Z, FY|Z, and FZ evaluated at the data points (denoted by F.x_z, F.y_z, and F.z_hat) and the bandwidth used (denoted by Fbw.x_z, Fbw.y_z, and Fbw.z_z) to evaluate the conditional distribution functions}
 }
 \description{
 Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test
