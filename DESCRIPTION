@@ -1,0 +1,17 @@
+Package: BrownCondInd
+Title: Nonparametric Notion of Residual and Test for Conditional Independence
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Rohit",
+           family = "Patra",
+           role = c("aut", "cre"),
+           email = "rkumarpatra@gmail.com")
+Description: In this article, we discuss the R implementation of the test statistic for the test of conditional independence of X, Y given Z. In the present version the codes provided in this page can only be used when X and Y are real valued and Z be multivariate random variable. Work based on PatraEtAl, 2015.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp
