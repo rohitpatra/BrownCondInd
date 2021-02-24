@@ -21,13 +21,6 @@ Calc.F.cond(x, y, z, z.dim, bwmet, bwobj = NULL)
 }
 \value{
 A list including the elements:
-\item{alp.hat}{estimate of alpha. NULL if `method' is `lwr.bnd'.}
-\item{alp.Lwr}{95\% lower confidence bound of alpha. NULL if `method` is `cv` or `fixed`.}
-\item{Fs.hat}{A list containing with elements `x` and `y` values for the function estimate of `F.s`}
-\item{dist.out}{An object of the class `dist.calc` using the complete data.gen}
-\item{c.n}{ Value of the tuning parameter used to compute the final estimate.}
-\item{cv.out}{An object of class `cv.mix.model`. The object is NULL if method is `fixed`.}
-
 \item{F.x_z}{Estimate of conditional distribution of X|Z}
 \item{F.y_z}{Estimate of conditional distribution of Y|Z}
 \item{Fbw.x_z}{Bandwidths used for computation of conditional distribution of x|z}

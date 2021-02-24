@@ -3,18 +3,18 @@ title: ' R Code for ''Nonparametric Notion of Residual and Test for Conditional 
 output: github_document
 bibliography: application.bib
 ---
-In this article, we discuss the R implementation of the test statistic for the test of conditional indendence of $X, Y$ given $Z$. In the present version the codes provided in this page can only be used when $X$ and $Y$ are real valued and $Z \in \mathbb{R}^d$ for $d\geq 1$.
+In this article, we discuss the R implementation of the test statistic for the test of conditional independence of $X, Y$ given $Z$. In the present version the codes provided in this page can only be used when $X$ and $Y$ are real valued and $Z \in \mathbb{R}^d$ for $d\geq 1$.
 
 To download the R package use the following in R:
 
 ```{r setup}
 library(devtools)
-# devtools::install_github(repo = "rohitpatra/BrownCondInd",ref='main')
+devtools::install_github(repo = "rohitpatra/BrownCondInd",ref='main')
 library(BrownCondInd)
 ```
 
 
-In the follwoing, we generate $n=100$ i.i.d. copies of $(X,Y,Z)$ when $d=2$. Moreover, we assume that $Z\sim N(0, \sigma_z^2 \textbf{I}_{5\times 5})$,  $X=W+Z_1+\epsilon$, and $X=W+Z_1+\epsilon'$, where $Z_1$ is the first coordinate of $Z$ and $\epsilon, \epsilon^\prime,$  and $W$ are three independent mean zero Gaussian random variables. Moreover, we assume that $\epsilon, \epsilon^\prime,$  and $W$ are independent of $Z,$ and  $var(\epsilon)=var(\epsilon^\prime)=\sigma^2_E,$ and $var(W)= \sigma^2_W$. Note that this is the simulation scenario used in Section 4 of @npres. Note that $X$ and $Y$ are conditionally independent of $Z$ only when $\sigma_W=0$. In the following, we fixed $\sigma_W$ to be $0.1$.
+In the following, we generate $n=100$ i.i.d. copies of $(X,Y,Z)$ when $d=2$. Moreover, we assume that $Z\sim N(0, \sigma_z^2 \textbf{I}_{5\times 5})$,  $X=W+Z_1+\epsilon$, and $X=W+Z_1+\epsilon'$, where $Z_1$ is the first coordinate of $Z$ and $\epsilon, \epsilon^\prime,$  and $W$ are three independent mean zero Gaussian random variables. Moreover, we assume that $\epsilon, \epsilon^\prime,$  and $W$ are independent of $Z,$ and  $var(\epsilon)=var(\epsilon^\prime)=\sigma^2_E,$ and $var(W)= \sigma^2_W$. Note that this is the simulation scenario used in Section 4 of @npres. Note that $X$ and $Y$ are conditionally independent of $Z$ only when $\sigma_W=0$. In the following, we fixed $\sigma_W$ to be $0.1$.
 ```{r}
 n <-100
 d <- 2
@@ -38,23 +38,23 @@ test.stat <- npresid.statistics(Data,d)
 As the limiting behavior of $\hat{\mathcal{E}}_n$ is unknown, in the following we approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of @npres) and evaluate the $p$-value of the proposed test. In the following ``boot.replic" denotes the number of bootstrap replications. We recommend using a bootstrap replication of size $1000.$ 
 
 ```{r}
-out <- npresid.boot(Data,d,boot.replic=50)
+out <- npresid.boot(Data,d,boot.replic=100)
 str(out, max.level = 1)
 ```
  
- Here  ``cond.dist.obj'' is the the list conataining estimators of $F_{X|Z}$, $F_{Y|Z}$, and $F_Z$ evaluated at the data points (denoted by F.x_z, F.y_z, and F.z_hat) and the bandwidth used (denoted by Fbw.x_z, Fbw.y_z, and Fbw.z_z) to evaluate the conditional distribution fucntions. Note that we use the functions available in the "np'' package ( see @np) to compute the optimal bandwiths as well as the estimates of the conditional distribution functions.  
+ Here  ``cond.dist.obj'' is the the list conataining estimators of $F_{X|Z}$, $F_{Y|Z}$, and $F_Z$ evaluated at the data points (denoted by F.x_z, F.y_z, and F.z_hat) and the bandwidth used (denoted by Fbw.x_z, Fbw.y_z, and Fbw.z_z) to evaluate the conditional distribution functions. Note that we use the functions available in the "np'' package ( see @np) to compute the optimal bandwidths as well as the estimates of the conditional distribution functions.  
 
 ```{r}
 str(out$cond.dist.obj, max.level = 1)
 ```
 
-The estimated $p$-value of the test proceudure is given through
+The estimated $p$-value of the test procedure is given through
 ```{r}
 p.value <- out$p.value 
 ```
 
 
-The required R file ``Npres_Fucntions.R''  can be downloaded [here](http://stat.columbia.edu/~rohit/Code/Npres_Fucntions.R). Note the fucntions require the following R-packages: boot, data.table, energy, np, and stats.
+The required R file ``Npres_Fucntions.R''  can be downloaded [here](http://stat.columbia.edu/~rohit/Code/Npres_Fucntions.R). Note the functions require the following R-packages: boot, data.table, energy, np, and stats.
  
  
  # References

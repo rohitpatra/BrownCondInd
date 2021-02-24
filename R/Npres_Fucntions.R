@@ -221,8 +221,8 @@ doing.boot.F.hat.emp.z.cv<-function(Dist.calc,bwmet,x,y,z,n ,z.dim,accuracy,R = 
   for (i in 1:n){
     temp.unif<-unif.data[index.z==i,]
     if (is.vector(temp.unif)) temp.unif<-matrix(temp.unif,ncol=2)
-    boot.x[index.z==i]=approx(eval.mat.F.x_z[i,],xvalues,xout=temp.unif[,1], method='linear',rule=2)$y
-    boot.y[index.z==i]=approx(eval.mat.F.y_z[i,],yvalues,xout=temp.unif[,2], method='linear',rule=2)$y
+    boot.x[index.z==i]=approx(eval.mat.F.x_z[i,],xvalues,xout=temp.unif[,1], method='linear',rule=2,ties=min)$y
+    boot.y[index.z==i]=approx(eval.mat.F.y_z[i,],yvalues,xout=temp.unif[,2], method='linear',rule=2,ties=min)$y
   }
   print(paste(R, 'bootstrap samples obtained'))
 
