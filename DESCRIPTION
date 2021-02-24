@@ -1,6 +1,6 @@
 Package: BrownCondInd
 Title: Nonparametric Notion of Residual and Test for Conditional Independence
-Version: 0.0.0.9000
+Version: 0.6
 Authors@R: 
     person(given = "Rohit",
            family = "Patra",

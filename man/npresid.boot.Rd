@@ -2,7 +2,7 @@
 % Please edit documentation in R/Npres_Fucntions.R
 \name{npresid.boot}
 \alias{npresid.boot}
-\title{Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2015)) and evaluate the p-value of the proposed test}
+\title{Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test}
 \usage{
 npresid.boot(data.to.work, z.dim, accuracy = 500, boot.replic = 999)
 }
@@ -19,7 +19,7 @@ npresid.boot(data.to.work, z.dim, accuracy = 500, boot.replic = 999)
 
 }
 \description{
-Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2015)) and evaluate the p-value of the proposed test
+Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test
 }
 \examples{
 # data generation mechanism used in the paper

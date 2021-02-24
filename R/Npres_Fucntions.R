@@ -260,7 +260,7 @@ boot.F.hat.emp.z.cv<-function(Dist.calc,x,y,z,n ,z.dim,accuracy,R = 999){
 
 
 
-#' Title
+#'  Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2016)
 #'
 #' @param data.to.work A numeric matrix containing `x`, `y`, and `z`. The first column is `x`, the second column is `y`, and the rest is data from `z`. We test for conditional independence of `x` and `y` given `z`
 #' @param z.dim Dimension of the random variable `z`
@@ -321,7 +321,7 @@ npresid.statistics<-function(data.to.work,z.dim){
   return(stats)
 }
 
-#'  Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2015)) and evaluate the p-value of the proposed test
+#'  Code to approximate the asymptotic distribution through a model based bootstrap procedure (see Section 3.2.1 of Patra, Sen, and Székely (2016)) and evaluate the p-value of the proposed test
 #'
 #'
 #' @param data.to.work A numeric matrix containing `x`, `y`, and `z`. The first column is `x`, the second column is `y`, and the rest is data from `z`. We test for conditional independence of `x` and `y` given `z`

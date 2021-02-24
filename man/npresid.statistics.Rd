@@ -2,7 +2,7 @@
 % Please edit documentation in R/Npres_Fucntions.R
 \name{npresid.statistics}
 \alias{npresid.statistics}
-\title{Title}
+\title{Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2016)}
 \usage{
 npresid.statistics(data.to.work, z.dim)
 }
@@ -15,7 +15,7 @@ npresid.statistics(data.to.work, z.dim)
 A numeric computing the statistic described in (3.7) of  see PatraEtAL15
 }
 \description{
-Title
+Code to compute the test statistic in (3.7) of Patra, Sen, and Székely (2016)
 }
 \examples{
 #data generation mechanism used in the paper
